@@ -1,6 +1,43 @@
 !pip install genai
+#############################3
 from google import genai
 from google.colab import userdata
 GEMINI_API_KEY=userdata.get('your key')
 client=genai.Client(api_key=GEMINI_API_KEY)
+###############################################33
+article="""
 
+Generative artificial intelligence (GenAI) tools are an emerging class of new-age artificial 
+intelligence algorithms capable of producing novel content — in varied formats such as text, 
+audio, video, pictures, and code — based on user prompts. Recent advances in machine 
+learning (ML), massive datasets, and substantial increases in computing power have propelled 
+such tools to human-level performance on academic and professional benchmarks , 1
+comparable to the ninetieth percentile on the SAT and the bar exam. 
+This rapid progress has led many to to believe that the metamorphosis of these technologies 
+2
+from research-grade demos to accessible and easy-to-use production-grade goods and 
+services carries the potential to supercharge business processes and operations while enabling 
+entirely new deliverables heretofore rendered infeasible by economic or technological factors. It 
+took OpenAI’s ChatGPT, a conversational web app based on a generative (multimodal) 
+language model, about five days to reach one million users (compared to 2.5 months for 
+3
+Instagram). On the business side, the Economist reports that the number of jobs mentioning AI
+related skills quadrupled from 2022 to 2023. This enthusiasm has not gone unmet by investors. 
+Generative AI startups reportedly raised 600% more capital in 2022 than in 2020 .
+
+
+"""
+#########################################################3
+prompt=f"""
+summarize below article in 50 words
+
+{article}
+
+"""
+#####################################3
+response=client.models.generate_content(
+    model="gemini-3.6-flash",
+    contents=prompt
+)
+#############################################
+print(response.text)
