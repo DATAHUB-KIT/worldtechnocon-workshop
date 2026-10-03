@@ -41,3 +41,10 @@ response=client.models.generate_content(
 )
 #############################################
 print(response.text)
+###############################################
+!pip install pillow
+##################################################
+from PIL import Image
+img=Image.open("/content/trumptwitt.jpg")
+img
+###################################################
